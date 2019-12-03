@@ -1,4 +1,11 @@
+# coding: utf-8
+# File: GraphShow.py
+# Date: 19-12-03
 
+'''创建展示页面'''
+class GraphShow():
+    def __init__(self):
+        self.base = '''
     <html>
     <head>
       <script type="text/javascript" src="VIS/dist/vis.js"></script>
@@ -14,8 +21,8 @@
       var allNodes;
       var highlightActive = false;
     
-      var nodesDataset = new vis.DataSet([{'group': 'Event', 'id': 137, 'label': '卢某'}, {'group': 'Event', 'id': 19, 'label': '关键词'}, {'group': 'Event', 'id': 48, 'label': '警方'}, {'group': 'Event', 'id': 128, 'label': '翁某'}, {'group': 'Event', 'id': 136, 'label': '力天佑'}, {'group': 'Event', 'id': 132, 'label': '胡某'}, {'group': 'Event', 'id': 121, 'label': '耿某'}, {'group': 'Event', 'id': 54, 'label': '出租屋'}, {'group': 'Event', 'id': 14, 'label': '找到'}, {'group': 'Event', 'id': 56, 'label': '屋内'}, {'group': 'Event', 'id': 23, 'label': '报警'}, {'group': 'Event', 'id': 21, 'label': '接到报警'}, {'group': 'Event', 'id': 22, 'label': '群众'}, {'group': 'Event', 'id': 25, 'label': '失踪'}, {'group': 'Event', 'id': 27, 'label': '死亡'}, {'group': 'Event', 'id': 29, 'label': '涉嫌参与'}, {'group': 'Event', 'id': 31, 'label': '抓获归案'}, {'group': 'Event', 'id': 33, 'label': '有钱'}, {'group': 'Event', 'id': 35, 'label': '带耿某'}, {'group': 'Event', 'id': 37, 'label': '带卢某'}, {'group': 'Event', 'id': 39, 'label': '搜手机'}, {'group': 'Event', 'id': 41, 'label': '抓获'}, {'group': 'Event', 'id': 61, 'label': '高频词'}, {'group': 'Event', 'id': 58, 'label': '嫌疑人'}, {'group': 'Event', 'id': 60, 'label': '进入'}, {'group': 'Event', 'id': 71, 'label': '人物'}, {'group': 'Event', 'id': 72, 'label': '广州'}, {'group': 'Event', 'id': 81, 'label': '地名'}, {'group': 'Event', 'id': 74, 'label': '广州番禺'}, {'group': 'Event', 'id': 109, 'label': '番禺区'}, {'group': 'Event', 'id': 107, 'label': '桥街'}, {'group': 'Event', 'id': 133, 'label': '番禺'}]); 
-      var edgesDataset = new vis.DataSet([{'from': 137, 'label': '', 'to': 19}, {'from': 48, 'label': '', 'to': 19}, {'from': 128, 'label': '', 'to': 19}, {'from': 136, 'label': '', 'to': 19}, {'from': 132, 'label': '', 'to': 19}, {'from': 121, 'label': '', 'to': 19}, {'from': 54, 'label': '', 'to': 19}, {'from': 14, 'label': '', 'to': 19}, {'from': 56, 'label': '', 'to': 19}, {'from': 23, 'label': '', 'to': 19}, {'from': 48, 'label': '', 'to': 21}, {'from': 22, 'label': '', 'to': 23}, {'from': 137, 'label': '', 'to': 25}, {'from': 137, 'label': '', 'to': 27}, {'from': 48, 'label': '', 'to': 29}, {'from': 121, 'label': '', 'to': 31}, {'from': 137, 'label': '', 'to': 33}, {'from': 136, 'label': '', 'to': 35}, {'from': 128, 'label': '', 'to': 37}, {'from': 136, 'label': '', 'to': 39}, {'from': 48, 'label': '', 'to': 41}, {'from': 137, 'label': '', 'to': 61}, {'from': 128, 'label': '', 'to': 61}, {'from': 136, 'label': '', 'to': 61}, {'from': 48, 'label': '', 'to': 61}, {'from': 121, 'label': '', 'to': 61}, {'from': 132, 'label': '', 'to': 61}, {'from': 54, 'label': '', 'to': 61}, {'from': 56, 'label': '', 'to': 61}, {'from': 58, 'label': '', 'to': 61}, {'from': 60, 'label': '', 'to': 61}, {'from': 137, 'label': '', 'to': 71}, {'from': 121, 'label': '', 'to': 71}, {'from': 132, 'label': '', 'to': 71}, {'from': 128, 'label': '', 'to': 71}, {'from': 136, 'label': '', 'to': 71}, {'from': 72, 'label': '', 'to': 81}, {'from': 74, 'label': '', 'to': 81}, {'from': 109, 'label': '', 'to': 81}, {'from': 107, 'label': '', 'to': 81}, {'from': 133, 'label': '', 'to': 81}, {'from': 121, 'label': '', 'to': 132}, {'from': 132, 'label': '', 'to': 121}, {'from': 121, 'label': '', 'to': 128}, {'from': 128, 'label': '', 'to': 121}, {'from': 128, 'label': '', 'to': 132}, {'from': 132, 'label': '', 'to': 128}, {'from': 137, 'label': '', 'to': 128}, {'from': 128, 'label': '', 'to': 137}, {'from': 107, 'label': '', 'to': 109}, {'from': 107, 'label': '', 'to': 137}, {'from': 109, 'label': '', 'to': 107}, {'from': 109, 'label': '', 'to': 137}, {'from': 137, 'label': '', 'to': 107}, {'from': 137, 'label': '', 'to': 109}, {'from': 121, 'label': '', 'to': 137}, {'from': 121, 'label': '', 'to': 133}, {'from': 137, 'label': '', 'to': 121}, {'from': 137, 'label': '', 'to': 133}, {'from': 137, 'label': '', 'to': 132}, {'from': 133, 'label': '', 'to': 121}, {'from': 133, 'label': '', 'to': 137}, {'from': 133, 'label': '', 'to': 128}, {'from': 133, 'label': '', 'to': 132}, {'from': 128, 'label': '', 'to': 133}, {'from': 132, 'label': '', 'to': 137}, {'from': 132, 'label': '', 'to': 133}, {'from': 137, 'label': '', 'to': 136}, {'from': 136, 'label': '', 'to': 137}]); 
+      var nodesDataset = new vis.DataSet(data_nodes); 
+      var edgesDataset = new vis.DataSet(data_edges); 
 
       var container = document.getElementById("VIS_draw");
 
@@ -130,4 +137,37 @@
     </script>
     </body>
     </html>
-    
+    '''
+    '''读取文件数据'''
+    def create_page(self, events):
+        nodes = []
+        for event in events:
+            nodes.append(event[0])
+            nodes.append(event[1])
+        node_dict = {node: index for index, node in enumerate(nodes)}
+
+        data_nodes = []
+        data_edges = []
+        for node, id in node_dict.items():
+            data = {}
+            data["group"] = 'Event'
+            data["id"] = id
+            data["label"] = node
+            data_nodes.append(data)
+
+        for edge in events:
+            data = {}
+            data['from'] = node_dict.get(edge[0])
+            data['label'] = ''
+            data['to'] = node_dict.get(edge[1])
+            data_edges.append(data)
+        return data_nodes, data_edges
+        # self.create_html(data_nodes, data_edges)
+        # return
+
+    '''生成html文件'''
+    def create_html(self, data_nodes, data_edges):
+        f = open('graph_show.html', 'w+',encoding = 'utf8')
+        html = self.base.replace('data_nodes', str(data_nodes)).replace('data_edges', str(data_edges))
+        f.write(html)
+        f.close()

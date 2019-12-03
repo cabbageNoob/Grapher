@@ -1,15 +1,8 @@
-# coding: utf-8
-# File: GraphShow.py
-# Date: 19-12-03
 
-'''创建展示页面'''
-class GraphShow():
-    def __init__(self):
-        self.base = '''
     <html>
     <head>
-      <script type="text/javascript" src="VIS/dist/vis.js"></script>
-      <link href="VIS/dist/vis.css" rel="stylesheet" type="text/css">
+       <script src="{{url_for('static',filename='VIS/js/vis.js')}}" charset="utf-8"></script>
+       <link href="{{ url_for('static', filename='VIS/css/vis.css') }}" rel="stylesheet">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -19,11 +12,15 @@ class GraphShow():
     <script type="text/javascript">
       var network;
       var allNodes;
+      var nodes,edges;
       var highlightActive = false;
-    
-      var nodesDataset = new vis.DataSet(data_nodes); 
-      var edgesDataset = new vis.DataSet(data_edges); 
-
+      data = JSON.parse('{{data|safe }}')
+        if(data){
+            nodes = data.nodes
+            edges = data.edges
+        }
+      var nodesDataset = new vis.DataSet(nodes)
+      var edgesDataset = new vis.DataSet(edges)
       var container = document.getElementById("VIS_draw");
 
       var data = {
@@ -137,37 +134,4 @@ class GraphShow():
     </script>
     </body>
     </html>
-    '''
-    '''读取文件数据'''
-    def create_page(self, events):
-        nodes = []
-        for event in events:
-            nodes.append(event[0])
-            nodes.append(event[1])
-        node_dict = {node: index for index, node in enumerate(nodes)}
-
-        data_nodes = []
-        data_edges = []
-        for node, id in node_dict.items():
-            data = {}
-            data["group"] = 'Event'
-            data["id"] = id
-            data["label"] = node
-            data_nodes.append(data)
-
-        for edge in events:
-            data = {}
-            data['from'] = node_dict.get(edge[0])
-            data['label'] = ''
-            data['to'] = node_dict.get(edge[1])
-            data_edges.append(data)
-
-        self.create_html(data_nodes, data_edges)
-        return
-
-    '''生成html文件'''
-    def create_html(self, data_nodes, data_edges):
-        f = open('graph_show.html', 'w+',encoding = 'utf8')
-        html = self.base.replace('data_nodes', str(data_nodes)).replace('data_edges', str(data_edges))
-        f.write(html)
-        f.close()
+    

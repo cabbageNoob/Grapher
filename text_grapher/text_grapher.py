@@ -2,11 +2,11 @@
 # File: crime_mining.py
 # Date: 19-12-03
 
-from sentence_parser import *
+from text_grapher.sentence_parser import *
 import re
 from collections import Counter
-from GraphShow import *
-from keywords_textrank import *
+from text_grapher.GraphShow import *
+from text_grapher.keywords_textrank import *
 
 '''事件挖掘'''
 class CrimeMining:
@@ -209,7 +209,7 @@ class CrimeMining:
         events_entity_keyword = self.rel_entity_keyword(ners, keywords, subsents_seg)
         events += events_entity_keyword
         #对事件网络进行图谱化展示
-        self.graph_shower.create_page(events)
+        return self.graph_shower.create_page(events)
 
 
 content1 = '''
