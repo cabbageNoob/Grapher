@@ -1,7 +1,7 @@
 
     <html>
     <head>
-       <script src="{{url_for('static',filename='VIS/js/vis.js')}}" charset="utf-8"></script>
+       <script src="{{url_for('static',filename='VIS/js/vis-network.min.js')}}" charset="utf-8"></script>
        <link href="{{ url_for('static', filename='VIS/css/vis.css') }}" rel="stylesheet">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
@@ -15,14 +15,14 @@
       var nodes,edges;
       var highlightActive = false;
       data = JSON.parse('{{data|safe }}')
-        if(data){
-            nodes = data.nodes
-            edges = data.edges
-        }
+	    if(data){
+	        nodes = data.nodes
+	        edges = data.edges
+	    }
       var nodesDataset = new vis.DataSet(nodes)
       var edgesDataset = new vis.DataSet(edges)
       var container = document.getElementById("VIS_draw");
-
+      // console.log(nodesDataset,edgesDataset)
       var data = {
         nodes: nodesDataset,
         edges: edgesDataset
@@ -31,9 +31,9 @@
           nodes: {
             shape: 'circle',
             size: 15,
-              font: {
-                  size: 15
-              }
+          	font: {
+              	size: 15
+          	}
           },
           edges: {
              font: {
