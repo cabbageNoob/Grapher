@@ -115,7 +115,7 @@ def index():
     百度再次回应称，针对网友对魏则西所选择的武警北京二院的治疗效果及其内部管理问题的质疑，百度正积极向发证单位及武警总部主管该院的相关部门递交审查申请函，希望相关部门能高度重视，立即展开调查。
     '''
     handler = CrimeMining()
-    data_nodes, data_edges = handler.main(content4)
+    data_nodes, data_edges = handler.main(content1)
     data = dict()
     data['nodes'] = data_nodes
     data['edges'] = data_edges
