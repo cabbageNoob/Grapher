@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 from flask import Flask, render_template, redirect, request
 import json
-from text_grapher.text_grapher import CrimeMining
+from text_grapher.text_grapher_main import CrimeMining
 
 app = Flask(__name__)
 

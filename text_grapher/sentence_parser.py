@@ -3,10 +3,11 @@
 # Date: 19-12-03
 import os
 from pyltp import Segmentor, Postagger, Parser, NamedEntityRecognizer
-
+pwd_path = os.path.abspath(os.path.dirname(__file__))
 class LtpParser():
     def __init__(self):
-        LTP_DIR = "./ltp_data_v3.4.0"
+        LTP_DIR = os.path.join(
+            pwd_path, "../ltp_data_v3.4.0")
         self.segmentor = Segmentor()
         self.segmentor.load(os.path.join(LTP_DIR, "cws.model"))
 
